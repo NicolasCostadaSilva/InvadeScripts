@@ -11,25 +11,25 @@ def run_force_bruta(url, username):
     if url and username:
         # Substitui pelo comando correto do script de força bruta
         command = f"python3 InvadeScripts/forca_bruta/forcaBruta.py {url} {username}; exec bash"
-        script_process = subprocess.Popen(['gnome-terminal', '--disable-factory', '--', 'bash', '-c', command])
+        script_process = subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
     else:
         print("Preencha todos os campos antes de iniciar o script!")
 
 def run_sniffing():
     global script_process
     command = f"sudo python3 InvadeScripts/sniffing/snif.py; exec bash"
-    script_process = subprocess.Popen(['gnome-terminal', '--disable-factory', '--', 'bash', '-c', command])
+    script_process = subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
 
 def run_DoS():
     global script_process
     command = f"python3 InvadeScripts/DoS/DoS.py; exec bash"
-    script_process = subprocess.Popen(['gnome-terminal', '--disable-factory', '--', 'bash', '-c', command])
+    script_process = subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
 
 # Função para rodar os outros scripts (como o servidor)
 def run_script(script_name):
     global script_process
     # Abre o script em um novo terminal (funciona no Linux e macOS)
-    script_process = subprocess.Popen(['gnome-terminal', '--disable-factory', '--', 'python3', script_name])
+    script_process = subprocess.Popen(['gnome-terminal', '--', 'python3', script_name])
     
     # Se estiver no Windows, use o comando abaixo:
     # script_process = subprocess.Popen(['start', 'cmd', '/k', 'python', script_name + ' & exit'], shell=True)
@@ -61,11 +61,14 @@ def DoS():
     back_button = tk.Button(root, text="Voltar", command=back_to_scripts_screen)
     back_button.pack(pady=10)
 
+    texto4 = tk.Label(root, text="Denial of Service, tem como objetivo quebrar uma aplicacao, fadigando ela, ou seja enviando diversas requisicoes no nosso caso, para piorar o desempenho da aplicacao", wraplength=900)  # 300 é o limite em pixels
+    texto4.pack(pady=10)
+
 def Sniffing():
     # Ocultar elementos da tela principal
     clear_main_screen()
 
-    global texto1, texto2, texto3, texto4
+    global texto1, texto2, texto3, texto4, texto5
     texto1 = tk.Label(root, text="Esse ataque visa espionar o que o usuario esta fazendo")
     texto1.pack(pady=10)
     texto2 = tk.Label(root, text="Nesse caso voce ira espionar a si mesmo")
@@ -88,11 +91,14 @@ def Sniffing():
     back_button = tk.Button(root, text="Voltar", command=back_to_scripts_screen)
     back_button.pack(pady=10)
 
+    texto5 = tk.Label(root, text="Sniffing tem a funcao de espionar o usuario, captando tudo que ele esta fazendo no seu computador, no nosso caso o alvo eh voce o proprio usuario, e para fins educativos ele vai te mostrando tudo o que voce esta fazendo na internet, com enderecos e tudo mais", wraplength=900)  # 300 é o limite em pixels
+    texto5.pack(pady=10)
+
 def SQL_screen():
     # Ocultar elementos da tela principal
     clear_main_screen()
 
-    global texto1, texto2, texto3, texto4
+    global texto1, texto2, texto3, texto4, texto5
     texto1 = tk.Label(root, text="Se voce ja iniciou o servidor web antes apenas entre la e tente invador")
     texto1.pack(pady=10)
     texto2 = tk.Label(root, text="Deixamos uma falha no codigo que permite a injecao de SQL, portanto tem 2 maneiras de acessar a pagina")
@@ -113,12 +119,15 @@ def SQL_screen():
     back_button = tk.Button(root, text="Voltar", command=back_to_scripts_screen)
     back_button.pack(pady=10)
 
+    texto5 = tk.Label(root, text="A Injecao de SQL tem como objetivo digitar algo que quebre o codigo, assim invadindo ou gerando um problema no siste alvo, no nosso caso digitando o codigo certo, conseguimos invadir a area de login", wraplength=900)  # 300 é o limite em pixels
+    texto5.pack(pady=10)
+
 # Função para a tela de Força Bruta
 def forca_bruta_screen():
     # Ocultar elementos da tela principal
     clear_main_screen()
 
-    global texto1, texto2, texto3
+    global texto1, texto2, texto3, texto4
     texto1 = tk.Label(root, text="Insira o nome de usuario que deseja Hackear")
     texto1.pack(pady=10)
     texto2 = tk.Label(root, text="Insira o url da pagina exata de login")
@@ -159,6 +168,9 @@ def forca_bruta_screen():
     # Botão para voltar à tela anterior
     back_button = tk.Button(root, text="Voltar", command=back_to_scripts_screen)
     back_button.pack(pady=10)
+
+    texto4 = tk.Label(root, text="Força Bruta tem como objetivo descobrir a senha da conta de um usuário, nesse caso simples como sabemos que a senha sempre será numérica, ele vai buscando número a número até encontrar a senha do usuário", wraplength=900)  # 300 é o limite em pixels
+    texto4.pack(pady=10)
 
 # Função para exibir os scripts
 def forward():
